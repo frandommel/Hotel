@@ -1,8 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Header = ({filters})=>
 {   
-    console.log(filters);
     const dias = [
         'domingo',
         'lunes',
@@ -22,7 +22,8 @@ const Header = ({filters})=>
                             desde el <strong>{dias[filters.dateFrom.getDay()]}, { filters.dateFrom.getDate()}/{filters.dateFrom.getMonth() + 1} de {filters.dateFrom.getFullYear()}</strong>
                             {filters.dateTo != undefined? " hasta "+dias[filters.dateTo.getDay()]+","+  filters.dateTo.getDate()+"/"+(filters.dateFrom.getMonth() + 1) +" de "+ filters.dateTo.getFullYear():""}
                         </h4>
-                        <a className="text-right text-dark link">Contacto</a>
+                        <Link to="/contacto" className="text-right text-dark link">Contacto</Link>
+                        <Link to="/" className="text-dark inicio">Inicio</Link>
                     </div>
                 
                 </div>

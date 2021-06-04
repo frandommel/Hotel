@@ -10,6 +10,16 @@
   margin-top: -2rem;
   text-decoration: none;
 }
+.inicio{
+  cursor: pointer!important;
+  float:right;
+  margin-top: -1rem;
+  margin-left: 2rem!important;
+  text-decoration: none;
+}
+.inicio:hover{
+  text-decoration:underline;
+}
 .link:hover{
   text-decoration:underline;
 }
