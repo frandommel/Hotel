@@ -23,6 +23,6 @@
 .link:hover{
   text-decoration:underline;
 }
-.input-group{
-  width: 18%;
+.optionClass{
+  width: 13rem;
 }

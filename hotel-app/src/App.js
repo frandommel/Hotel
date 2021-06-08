@@ -3,15 +3,15 @@ import './App.css';
 import Header from './components/Header'
 import Data from './assets/scripts/data';
 import { useEffect, useState } from 'react';
-import  DateFilter from './components/DateFilter'
-import OptionsFilter from './components/OptionsFilter'
 
+import Filter from './components/Filter'
 //importo el routing
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
+import DateFilter from './components/DateFilter';
 
 const App = () =>
 {
@@ -28,30 +28,6 @@ const App = () =>
     setDataInfo(Data);  //seteo la info cuando se reenderiza
   },[])
 
-  //seteo fecha ingreso
-  const handleChangeFilterDateIn = (fecha)=>{
-    let data = {...filters}
-    setFilters({
-      dateFrom: fecha,
-      dateTo: data.dateTo,
-      country: data.country,
-      price: data.price,
-      rooms: data.rooms
-    })
-  }
-
-  //seteo fecha egreso
-  const handleChangeFilterDateOut = (fecha)=>{
-    let data = {...filters}
-    setFilters({
-      dateFrom: data.dateFrom,
-      dateTo: fecha,
-      country: data.country,
-      price: data.price,
-      rooms: data.rooms
-    })
-  }
-
   return (
     <>
       <Router>
@@ -64,13 +40,7 @@ const App = () =>
                   </Route>
 
                   <Route path="/">
-                        <DateFilter icon="fas fa-sign-in-alt" 
-                                    handleChangeFilterDate={handleChangeFilterDateIn}
-                        />
-                        <DateFilter icon="fas fa-sign-out-alt"
-                                    handleChangeFilterDate={handleChangeFilterDateOut}
-                        />    
-                        <OptionsFilter countrys = { dataInfo.map(data => data.country) }/>              
+                      <Filter filters={filters} setFilters={setFilters}/>
                   </Route>         
 
             </Switch>
