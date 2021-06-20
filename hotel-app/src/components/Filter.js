@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import  DateFilter from './DateFilter'
 import OptionsFilter from './OptionsFilter'
-const Filter = ({filters,setFilters}) =>
+const Filter = ({filters,setFilters, dataInfo}) =>
 {
+    const[countrys, setCountrys] = useState([]);
+
         //seteo fecha ingreso
     const handleChangeFilterDateIn = (fecha)=>{
         let data = {...filters}
@@ -26,6 +28,13 @@ const Filter = ({filters,setFilters}) =>
         rooms: data.rooms
         })
     }
+    //filtro el pais para mandarlo
+    const countryFilter = () =>{
+        var Array = dataInfo.map(data => data.country);
+        let country = new Set(Array);
+        let countryArray = [...country];
+        return countryArray;
+    };
     return(
         <>
         <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
@@ -40,14 +49,9 @@ const Filter = ({filters,setFilters}) =>
                                 /> 
             </div>
             <div className="nav-item mx-1 optionClass">
-                    <OptionsFilter countrys={"argentina"}/> 
+                    <OptionsFilter data={countryFilter}/> 
             </div>
-            <div className="nav-item mx-1 optionClass">
-                    <OptionsFilter countrys={"argentina"}/> 
-            </div>
-            <div className="nav-item mx-1 optionClass">
-                    <OptionsFilter countrys={"argentina"}/> 
-            </div>                        
+                       
         </nav>
         </>
     );

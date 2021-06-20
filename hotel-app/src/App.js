@@ -40,7 +40,7 @@ const App = () =>
                   </Route>
 
                   <Route path="/">
-                      <Filter filters={filters} setFilters={setFilters}/>
+                      <Filter filters={filters} setFilters={setFilters} dataInfo={ dataInfo }/>
                   </Route>         
 
             </Switch>
