@@ -5,6 +5,8 @@ import Data from './assets/scripts/data';
 import { useEffect, useState } from 'react';
 
 import Filter from './components/Filter'
+import Hotel from "./components/Hotel"
+
 //importo el routing
 import {
   BrowserRouter as Router,
@@ -28,6 +30,10 @@ const App = () =>
     setDataInfo(Data);  //seteo la info cuando se reenderiza
   },[])
 
+  const filterHotels = () =>{
+
+  }
+
   return (
     <>
       <Router>
@@ -41,6 +47,7 @@ const App = () =>
 
                   <Route path="/">
                       <Filter filters={filters} setFilters={setFilters} dataInfo={ dataInfo }/>
+                      <Hotel hotels = { dataInfo } filters={filters}/>
                   </Route>         
 
             </Switch>

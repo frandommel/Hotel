@@ -28,13 +28,33 @@ const Filter = ({filters,setFilters, dataInfo}) =>
         rooms: data.rooms
         })
     }
+    const handleChangeFilterCountry = (country) =>
+    {
+        let data = {...filters}
+        setFilters({
+        dateFrom: data.dateFrom,
+        dateTo: data.dateTo,
+        country: country,
+        price: data.price,
+        rooms: data.rooms
+        })
+    }
     //filtro el pais para mandarlo
     const countryFilter = () =>{
         var Array = dataInfo.map(data => data.country);
-        let country = new Set(Array);
+        let country = new Set(Array);   //hago un set para no agregar repetidos 
         let countryArray = [...country];
         return countryArray;
     };
+    const priceFilter = () =>{
+        let array = ["$","$$","$$$","$$$$"];
+        return array;
+    }
+    const roomFilter = () =>{
+        let array = ["Habitaciones","1 a 10","11 a 20","21 a 30","31 a 40"];
+        return array;       
+    }
+
     return(
         <>
         <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
@@ -49,9 +69,15 @@ const Filter = ({filters,setFilters, dataInfo}) =>
                                 /> 
             </div>
             <div className="nav-item mx-1 optionClass">
-                    <OptionsFilter data={countryFilter}/> 
+                    <OptionsFilter data={countryFilter} 
+                                   handleChangeFilterCountry = { handleChangeFilterCountry }/> 
             </div>
-                       
+            <div className="nav-item mx-1 optionClass">
+                    <OptionsFilter data={ priceFilter }/> 
+            </div>    
+            <div className="nav-item mx-1 optionClass">
+                    <OptionsFilter data={ roomFilter }/> 
+            </div>                   
         </nav>
         </>
     );

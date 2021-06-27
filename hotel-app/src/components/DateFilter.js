@@ -4,7 +4,7 @@ const DateFilter = ({icon, handleChangeFilterDate }) =>
 {
     const handleChange = (event)=>{
         var date = new Date(event.target.value);
-        if(String(date.getFullYear()).length == 4)
+        if(String(date.getFullYear()).length === 4)
         {
             date.setDate(date.getDate()+1);
             handleChangeFilterDate(date);

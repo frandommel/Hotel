@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-//para hacerlo generico voy a recibir por parametros los diferentes tipos y pregunto cual llego
-const OptionsFilter = ({data}) =>{
+const OptionsFilter = ({data, handleChangeFilterCountry}) =>{
 
     const handleChange =(event)=> {
-        console.log(event.target.value);
+        let option = event.target.value;
+        handleChangeFilterCountry(option);
     }
     return(
         <>   
